@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Fun Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .fact-display {
+            margin: 20px 0;
+            font-size: 1.2em;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .btn {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .fact-display {
+                font-size: 1em;
+            }
+
+            .btn {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Anime Fun Facts</h1>
+        <div id="fact-display" class="fact-display">Click the button to see a fun fact!</div>
+        <button id="fact-button" class="btn">Show Random Fact</button>
+        <button id="twitter-button" class="btn">Share on Twitter</button>
+    </div>
+    <script>
+        const facts = [
+            { "fact": "Anime originated in Japan and dates back to the early 20th century, with the first known anime being released in 1917." },
+            { "fact": "The word 'anime' is derived from the English word 'animation' and in Japan, it refers to all forms of animated media." },
+            { "fact": "Studio Ghibli's 'Spirited Away' won the Academy Award for Best Animated Feature in 2003, making it the first (and so far only) non-English language film to win in this category." },
+            { "fact": "The longest-running anime series is 'Sazae-san', which has been airing since 1969 and holds the Guinness World Record for the longest-running animated television series." },
+            { "fact": "Anime often features exaggerated facial expressions and emotions, which are used to convey characters' feelings more vividly." },
+            { "fact": "The anime 'One Piece' holds the Guinness World Record for the most copies published for the same comic book series by a single author." },
+            { "fact": "Anime conventions, such as Anime Expo in Los Angeles and Comiket in Tokyo, attract hundreds of thousands of fans from around the world." },
+            { "fact": "Many anime series are based on manga, which are Japanese comic books or graphic novels." },
+            { "fact": "Anime has a wide range of genres, including action, romance, horror, science fiction, and slice of life, catering to diverse audiences." },
+            { "fact": "The anime industry is a significant part of Japan's economy, with billions of dollars in revenue generated annually from merchandise, films, and television series." }
+        ];
+
+        document.getElementById('fact-button').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factDisplay = document.getElementById('fact-display');
+            factDisplay.style.opacity = 0;
+            setTimeout(() => {
+                factDisplay.textContent = facts[randomIndex].fact;
+                factDisplay.style.opacity = 1;
+            }, 500);
+        });
+
+        document.getElementById('twitter-button').addEventListener('click', () => {
+            const factText = document.getElementById('fact-display').textContent;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(factText)}`;
+            window.open(twitterUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
