@@ -1,0 +1,2 @@
+# Ruberu
+Gen AI workshop
